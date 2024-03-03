@@ -1,6 +1,6 @@
 class Solution {
 public:
-
+      //dytto same --koko eating bananas 875
      long long divisonsum(vector<int>& nums, int k)
     {
         long long ans=0;
