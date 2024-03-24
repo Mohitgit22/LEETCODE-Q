@@ -1,6 +1,9 @@
 class Solution {
 public:
     int longestPalindromeSubseq(string s) {
+        // it is a question of LCS(LONGEST COMMON SUBSEQUENCE) - 
+        //just make a reverse string and then find the lcs from both the string
+
         string s1 = s;
         reverse(s1.begin(),s1.end());
         int m = s.length();
