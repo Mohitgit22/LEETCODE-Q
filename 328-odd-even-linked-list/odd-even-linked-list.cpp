@@ -17,6 +17,9 @@ public:
         ListNode *odd= head;
         ListNode *even = head->next;
         ListNode *evenstarting = even;
+
+        //As even node will always be ahead of odd node , 
+        //all the checks will be assocaited with the even node i.e. even!=NULL and even->next!=NULL
         while(even!=NULL && even->next!=NULL) {
             odd->next = odd->next->next;
             odd = odd->next;
