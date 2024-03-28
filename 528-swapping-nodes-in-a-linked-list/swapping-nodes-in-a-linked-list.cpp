@@ -21,10 +21,6 @@ public:
             curr = curr->next;
           }
 
-        //   int mid = ceil((size+1)/2);
-        //   if(mid == k)
-        //   return head;
-
           int s = size-k;
           curr=head;
           for(int i =0; i<k-1; i++)
