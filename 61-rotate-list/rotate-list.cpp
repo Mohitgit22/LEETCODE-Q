@@ -16,12 +16,12 @@ public:
 
          int cnt = 0;
          ListNode *curr = head;
-         ListNode *join = curr;
+         ListNode *newhead = curr;
          while(curr){
             cnt++;
             curr= curr->next;
          }
-          int s = k%cnt;
+         int s = k%cnt;
          if(s == 0)
          return head;
 
@@ -33,13 +33,13 @@ public:
          }
 
          ListNode *temp = curr->next;
-         join = temp;
+         newhead = temp;
           //make the end 
         curr->next = NULL;  
         while(temp->next!=NULL)
             temp=temp->next;
          
         temp->next = head;
-        return join;
+        return newhead;
     }
 };
