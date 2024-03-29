@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int delop(string s1,string s2,int m,int n) {
+    int minop(string s1,string s2,int m,int n) {
 
           int dp[m+1][n+1];
           for(int i =0; i< m+1; i++)
@@ -24,6 +24,6 @@ public:
            int m = word1.length();
           int n = word2.length();
 
-          return delop(word1, word2, m ,n );
+          return minop(word1, word2, m ,n );
     }
 };
