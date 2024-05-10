@@ -22,7 +22,7 @@ public:
         return isValidbyRange(root->left,mini, root->val) and isValidbyRange(root->right,root->val, maxi);
      }
     bool isValidBST(TreeNode* root) {
-        long long int mini = -1000000000000, maxi = 1000000000000;
-        return isValidbyRange(root, mini, maxi);
+        long long int mini = (long long)INT_MIN-1, maxi = (long long)INT_MAX+1;
+        return isValidbyRange(root, mini,maxi);
     }
 };
