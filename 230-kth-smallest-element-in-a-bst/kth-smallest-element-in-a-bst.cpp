@@ -31,29 +31,4 @@ public:
         return ans(root, cnt, k);
     }
 };
-        // if(root == nullptr)
-        //    return 0;
-
-        // stack<TreeNode*> st;
-        // st.push(root);
-
-        // TreeNode* temp = root->left;
-        //  int cnt = 0;
-         
-        // while(!st.empty()) {
-        //     while(temp) {
-        //        st.push(temp);
-        //        temp = temp->left;
-        //     }
-
-        //     temp = st.top();
-        //     st.pop();
-        //     cnt++;
-        //     if(cnt == k)
-        //     return temp->val;
-
-        //     temp = root->right;
-        // }
-        //  return 0;
-        // }   
-// };
+    
