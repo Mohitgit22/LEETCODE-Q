@@ -58,7 +58,10 @@ public:
     //    for(auto it: right){
     //     cout<<it<<" ";
     //    }
+        
 
+
+        //finding the width
         vector<int> width(n,1);
         for(int i = 0; i < n ; i++) {
             width[i] = right[i] - left[i] - 1;
@@ -68,9 +71,9 @@ public:
     //     for(auto it: width){
     //     cout<<it<<" ";
     //    }
-    
+      
+        //finding the area
         vector<int> area(n,0);
-        // int ans = INT_MIN;
         for(int i = 0; i < n ; i++) {
             area[i] = width[i]* heights[i];
         }
@@ -80,7 +83,7 @@ public:
     //    }
 
 
-     int   ans = *max_element(area.begin(), area.end());
+       int ans = *max_element(area.begin(), area.end());
        return ans;
 
     }
