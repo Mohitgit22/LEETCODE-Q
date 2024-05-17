@@ -13,22 +13,32 @@
 //             else if(!st.empty() &&( (st.top()>=0 && asteroids[i] >=0) || (st.top()<0 && asteroids[i]<0)))
 //               st.push(asteroids[i]);
 //             else if(!st.empty() && abs(st.top()) == abs(asteroids[i])){
+//                 while(!st.empty() && (st.top() < 0 && asteroids[i] > 0)){
 //                 if(st.top() < 0 && asteroids[i] > 0)
 //                 st.pop();
-//                 else
-//                 continue;
+//                 else{
+//                 st.push(asteroids[i]);
+//                 break;
+//                 }
+//                 }
 //             }
 //             else if(!st.empty() && abs(st.top()) < abs(asteroids[i])){
+//                 while(!st.empty()){
 //                 if(st.top() < 0 && asteroids[i] > 0){
 //                 st.pop();
 //                 st.push(asteroids[i]);
 //                 }else
-//                 continue;
+//                 {st.push(asteroids[i]);
+//                  break;}
+//                 }
 //             }else if(!st.empty() && abs(st.top()) >  abs(asteroids[i])){
+//                 while(!st.empty()) {
 //                  if(st.top() < 0 && asteroids[i] > 0)
 //                  continue;
-//                  else
+//                  else{
 //                  st.push(asteroids[i]);
+//                  break;}
+//                 }
 //             }
 //     }
 
