@@ -1,6 +1,7 @@
 class Solution {
 public:
-    bool search(vector<int>& nums, int target) {
+
+     bool search(vector<int>& nums, int target) {
         int low = 0;
         int high = nums.size()-1;
         while(low <= high) {
