@@ -8,6 +8,24 @@ public:
                     dfs(adj, v, vis);
           }
  }
+
+ void bfs( vector<vector<int>>& adj, int u, vector<bool>& vis) {
+     vis[u] = true;
+     queue<int> que;
+    que.push(u);
+
+    while(!que.empty()) {
+        int node = que.front();
+        que.pop();
+
+        for(int&v: adj[node]) {
+            if(vis[v] == false){
+              vis[v] = true;
+              que.push(v);
+        }
+    }
+ }
+ }
  int makeConnected(int n, vector<vector<int>>& connections) {
     vector<bool> vis(n, false);
 
@@ -24,7 +42,8 @@ public:
     int cnt = 0; 
     for(int i = 0; i < n; i++) {
         if(!vis[i]) {
-            dfs(adj, i, vis);
+            //dfs(adj, i, vis);
+            bfs(adj, i, vis);
             cnt++;
         }
     }
