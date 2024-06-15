@@ -1,30 +1,34 @@
 class Solution {
 public:
+    typedef pair<int, char> P;
     string frequencySort(string s) {
-        map<char, int> mp;
-        for(int i=0 ; i<s.length(); i++) {
+        
+        unordered_map<char, int> mp;
+
+        for(int i = 0; i < s.size(); i++) {
             mp[s[i]]++;
         }
-      
-        vector<pair<int, char>> v;
-        for(auto it: mp) {
-              v.push_back({it.second, it.first});
+
+        priority_queue<P> maxh;
+
+        for(auto it = mp.begin(); it != mp.end(); it++){
+            maxh.push({it->second, it->first});
         }
 
-        sort(v.begin(), v.end());
-        string p ="";
-        //
-            for(int i=v.size()-1;i>=0;i--)
-        {
-           int x=v[i].first;
-           char c=v[i].second; 
-           while(x>0)
-           {
-               p+=c;
-                x--;
-           }    
-        }
-        return p;
+        string ans = "";
 
+        while(!maxh.empty()) {
+            char ch = maxh.top().second;
+            int freq = maxh.top().first;
+
+            maxh.pop();
+
+            while( freq!=0 ) {
+                ans += ch;
+                freq--;
+            }
+        }
+
+        return ans;
     }
 };
