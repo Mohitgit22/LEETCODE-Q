@@ -1,24 +1,23 @@
 class Solution {
 public:
-    int f(int ind, vector<int>& nums, vector<int>& dp) {
-        if(ind == 0)
-        return nums[0];
+    int bottomup(int n, vector<int>& nums, vector<int>& dp) {
+         dp[0] = nums[0];
 
-        if(ind < 0)
-        return 0;
+         for(int i = 1; i < n; i++) {
+            int pick = nums[i];
+            if(i>1)
+             pick  = pick + dp[i-2];
 
-        if(dp[ind] != -1)
-        return dp[ind];
+             int notpick = dp[i-1];
 
-        int pick = nums[ind] + f(ind-2, nums, dp);
-        int notpick = f(ind - 1, nums, dp);
+             dp[i] = max(pick, notpick);
+         }
 
-        return dp[ind] = max(pick, notpick);
+         return dp[n-1];
     }
-    
     int rob(vector<int>& nums) {
         int n = nums.size();
-        vector<int> dp(n, -1);
-        return f(n-1, nums, dp);
+        vector<int> dp(n , 0);
+        return bottomup(n, nums, dp);
     }
 };
