@@ -11,27 +11,29 @@
  */
 class Solution {
 public:
-     int depth(TreeNode *curr) {
-        if(curr == NULL)
+    int height(TreeNode* root) {
+        if(root == nullptr)
         return 0;
 
-        return 1 + max(depth(curr->left), depth(curr->right));
-     }
+        return 1 + max(height(root->left), height(root->right));
+    }
+
     bool isBalanced(TreeNode* root) {
-            if(root == nullptr)
-            return true;
+        if(root == nullptr)
+        return true;
 
-            int leftheight = depth(root->left);
-            int rightheight = depth(root->right);
+        int leftheight = height(root->left);
+        int rightheight = height(root->right);
 
-            if(abs(leftheight - rightheight) > 1)
-              return false;
-           
-            bool left =  isBalanced(root->left);
-            bool right =  isBalanced(root->right);
-             if(left == false || right == false)
-                 return false;
+        if(abs(leftheight - rightheight) > 1)
+        return false;
 
-            return true;
+        bool left = isBalanced(root->left);
+        bool right = isBalanced(root->right);
+
+        if(left == false || right == false)
+        return false;
+
+        return true;
     }
 };
