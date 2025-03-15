@@ -11,23 +11,26 @@
  */
 class Solution {
 public:
-    int findDia(TreeNode* node, int& maxi){
-        if(node == nullptr)
+    int ans = 0;
+    int height(TreeNode* root)  {
+        if(root == nullptr)
         return 0;
 
-        int left = findDia(node->left, maxi);
-        int right = findDia(node->right, maxi);
-
-        maxi = max(maxi, left+right);
-        return 1 + max(left, right);
+        return 1 + max(height(root->left), height(root->right));
     }
-
     int diameterOfBinaryTree(TreeNode* root) {
         if(root == nullptr)
         return 0;
 
-        int maxi = 0;
-        findDia(root, maxi);
-        return maxi;
+       
+       int lh = height(root->left);
+       int rh = height(root->right);
+
+        ans = max(ans, lh + rh);
+
+       diameterOfBinaryTree(root->left);
+       diameterOfBinaryTree(root->right);
+
+       return ans;
     }
 };
