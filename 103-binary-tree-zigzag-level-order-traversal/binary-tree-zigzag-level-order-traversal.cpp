@@ -12,36 +12,36 @@
 class Solution {
 public:
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
-         vector<vector<int>> result;
-         if(root == nullptr)
-              return result;
+         vector<vector<int>> ans;
 
-         queue<TreeNode*> q;
-         q.push(root);
+        if(root == nullptr)
+        return ans;
 
-         bool leftToRight=true;
+        queue<TreeNode*> que;
+        que.push(root);
 
-         while(!q.empty()){
-            int size = q.size();
-            vector<int> row(size);
-
-            for(int i =0; i < size; i++) {
-                TreeNode *node = q.front();
-                q.pop();
-
-                //find the position to fill the nodes value
-                int index = leftToRight ? i : (size-1-i);
-                row[index] = node->val;
-
-                if(node->left)
-                   q.push(node->left);
-                if(node->right)
-                   q.push(node->right);
+        vector<int> vec;
+        bool left_to_right = true;
+        while(!que.empty()){
+            int size = que.size();
+            // cout<<size<<endl;
+            for(int i = 0; i < size; i++) {
+                TreeNode* curr = que.front();
+                que.pop();
+                vec.push_back(curr->val);
+               
+               if(curr->left) que.push(curr->left);
+               if(curr->right) que.push(curr->right);
             }
-                //after this level
-                leftToRight = !leftToRight;
-                result.push_back(row);
-         }
-         return result;
+
+            if(left_to_right == false) 
+            reverse(vec.begin(),vec.end());
+
+            ans.push_back(vec);
+            vec.clear();
+
+            left_to_right = !left_to_right;
+        }
+        return ans;
     }
 };
