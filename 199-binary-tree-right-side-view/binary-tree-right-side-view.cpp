@@ -11,22 +11,28 @@
  */
 class Solution {
 public:
-    void rightview(TreeNode *node, vector<int>& ans, int level) {
-            if(node == nullptr)
-              return;
+    void dfs(TreeNode* root, vector<int>& vec, int level) {
+        if(root == nullptr)
+        return ;
 
-            if(ans.size() == level)
-               ans.push_back(node->val);
-             rightview(node->right,ans, level+1);
-             rightview(node->left,ans, level+1);
+        if(vec.size() == level) {
+            vec.push_back(root->val);
+        }
+
+        dfs(root->right, vec, level+1);
+        dfs(root->left, vec, level+1);
     }
 
     vector<int> rightSideView(TreeNode* root) {
-        vector<int> ans;
         if(root == nullptr)
-          return ans;
-        
-        rightview(root, ans, 0);
-        return ans;
+        return {};
+
+        if(root->left == nullptr and root->right == nullptr)
+        return {root->val};
+
+        int level = 0;
+        vector<int> vec;
+        dfs(root, vec, level);
+        return vec;
     }
 };
