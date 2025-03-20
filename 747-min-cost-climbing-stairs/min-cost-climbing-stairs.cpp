@@ -32,10 +32,22 @@ public:
 
 
        //bottom up
-       for(int state = 2; state <= n ; state++) {
-        int onestep = cost[state - 1] + dp[state - 1];
-        int twostep = cost[state - 2] + dp[state - 2];
+    //    for(int state = 2; state <= n ; state++) {
+    //     int onestep = cost[state - 1] + dp[state - 1];
+    //     int twostep = cost[state - 2] + dp[state - 2];
+    //     dp[state] = min(onestep, twostep);
+    //    }
+
+    //space optimized bottom up
+    int prev1  = 0;
+    int prev2 = 0;
+        for(int state = 2; state <= n ; state++) {
+        int onestep = cost[state - 1] + prev1;
+        int twostep = cost[state - 2] + prev2;
+
         dp[state] = min(onestep, twostep);
+         prev2 = prev1;
+         prev1 = dp[state];
        }
 
     //    return mincost(cost, n, dp);
